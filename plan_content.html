@@ -1,0 +1,271 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>CodeBrothers Fitness Pro 1.0</title>
+    <!-- Meta Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Modernize Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- //Meta Tags -->
+<!--
+    <script src="js/jquery.js"></script>
+    <script src="js/checker.js"></script>
+-->
+    <!-- Style-sheets -->
+    <!-- Bootstrap Css -->
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- Bootstrap Css -->
+    <!-- Bars Css -->
+    <link rel="stylesheet" href="css/bar.css">
+    <!--// Bars Css -->
+    <!-- Calender Css -->
+    <link rel="stylesheet" type="text/css" href="css/pignose.calender.css" />
+    <!--// Calender Css -->
+    <!-- Common Css -->
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!--// Common Css -->
+    <!-- Nav Css -->
+    <link rel="stylesheet" href="css/style4.css">
+    <!--// Nav Css -->
+    <!-- Fontawesome Css -->
+    <link href="css/fontawesome-all.css" rel="stylesheet">
+    <!--// Fontawesome Css -->
+    <!--// Style-sheets -->
+
+    <!--web-fonts-->
+    <link href="//fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <!--//web-fonts-->
+    <script src="js/jquery.js"></script>
+    <script src="js/angular.js"></script>
+    <script src="js/plan.js"></script>
+</head>
+
+<body >
+      <section class="forms-section" ng-model="planApp" ng-controller="planCtrl">
+            
+            <div class="outer-w3-agile mt-3" ng-app="planApp" ng-controller="planCtrl">
+                    <h4 class="tittle-w3-agileits mb-4">Plans{{planIndex}}</h4>
+                    <div class="row validform">
+                        <div class="col-md-4 order-md-2 mb-4 validform1">
+                            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="text-muted">Existing Plans</span>
+                                <span class="badge badge-secondary badge-pill">{{planList.length}}</span>
+                            </h4>
+<!--                            Cart Items-->
+                            <ul class="list-group mb-3" style="max-height: 400px; overflow-y: scroll;">
+                                <div ng-repeat="p in planList" id="listDiv">
+                                <li class="list-group-item d-flex justify-content-between" ng-mouseover="hoverIn(p)" ng-mouseleave="hoverOut(p)" style="cursor: pointer" ng-class="{'lh-condensed' : p.isDarkActive, 'bg-light' : p.isLightActive }">
+                                    <div>
+                                        <h6 class="my-0" ng-class="{'text-muted' : p.isDarkActive, 'text-success' : p.isLightActive}"  data-toggle="modal" data-target="#exampleModal">{{p[1]}}</h6>
+                                        <small ng-class="{'text-muted' : p.isDarkActive, 'text-success' : p.isLightActive}">Years:{{p[3]}} , Months:{{p[4]}}</small>
+                                    </div>
+                                    <span ng-class="{'text-muted' : p.isDarkActive, 'text-success' : p.isLightActive}">₹{{p[2]}}</span>
+                                    <span ng-class="{'text-muted' : p.isDarkActive, 'text-danger' : p.isLightActive}"><a  ng-click="delete($index)"  style="cursor: pointer;"><i class="fas fa-trash"></i></a></span>
+                                </li>
+                                </div>
+
+                            </ul> 
+<!--                            // Cart Items-->
+                            
+                             <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel1">Edit Form</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                             <form  method="post" class="needs-validation" novalidate="">
+                                <p style="color: red;">{{planError}}</p>
+<!--                                Plan Name -->
+                                <div class="mb-3">
+                                    <label for="username1">Plan Name</label>
+                                    <div class="input-group">
+                                        <input type="text" ng-model="nameE" ng-style="nameStyleE" class="form-control" id="username1" placeholder="Enter the plan name" >                            
+                                    </div>
+                                </div>
+<!--                                //Plan Name -->
+                                                 
+<!--                                Price -->
+                                <div class="mb-3">
+                                    <label for="address1">Price</label>
+                                    <input type="number" ng-model="priceE" ng-change="finalFunE()" ng-style="priceStyleE" class="form-control" id="address1" placeholder="Enter the plan price amount" >
+                                </div>                                
+                                <hr class="mb-4">
+<!--                               //Price --> 
+                                                 
+<!--                                Tax -->
+                                
+                            <h4 class="mb-3">Tax</h4>
+                                <p style="color: red;">{{taxErrorE}}</p>
+                                <div class="row">
+                                    <div class="col-md-3 mb-3">
+                                        <label for="zip1">Tax%</label>
+                                        <input type="number" ng-model="taxPercentE"ng-change="finalFunE()" class="form-control" id="zip1" placeholder="0" required="">
+                                    </div>
+                                    <div class="col-md-5 mb-3">
+                                        <label for="country1">Type</label>
+                                        <select class="custom-select d-block w-100" ng-model="taxTypeE" ng-change="finalFunE()" >
+                                            <option selected>None</option>
+                                            <option>Inclusive</option>
+                                            <option>Exclusive</option>
+                                        </select>
+                                    </div>
+                                    
+                                </div>
+                                  <div class="mb-3">
+                                    <label for="address1">Final Price</label>
+                                    <input type="number" ng-model="finalPriceE" class="form-control" id="address1" disabled >
+                                </div>                                
+                                <hr class="mb-4">
+                                
+<!--                                // Tax -->    
+                                                 
+<!--                                Duration -->                                
+                                <h4 class="mb-3">Duration</h4>
+                                <p style="color: red;">{{validErrorE}}</p>
+                                <div class="row">
+                                    <div class="col-md-3 mb-3">
+                                        <label for="zip2">Years</label>
+                                        <input type="number" ng-model="yearsE" class="form-control" id="zip2" placeholder="0" required="">
+                                    </div>
+                                    <div class="col-md-5 mb-3">
+                                        <label for="country2">Months</label>
+                                        <select class="custom-select d-block w-100" id="country2" ng-model="monthsE">
+                                            <option>0</option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                            <option>6</option>
+                                            <option>7</option>
+                                            <option>8</option>
+                                            <option>9</option>
+                                            <option>10</option>
+                                            <option>11</option>
+                                        </select>
+                                    </div>
+                                    
+                                </div>
+                                <hr class="mb-4">
+<!--                                // Duration -->                                                  
+                                <button class="btn btn-primary btn-lg btn-block error-w3l-btn" ng-click="planClickE()" >Add Plan</button>                                                 
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Modal -->
+
+                        </div>
+                        <div class="col-md-8 order-md-1 validform2">
+
+                            <form  method="post" class="needs-validation" novalidate="">
+                                <p style="color: red;">{{planError}}</p>
+<!--                                Plan Name -->
+                                <div class="mb-3">
+                                    <label for="username">Plan Name</label>
+                                    <div class="input-group">
+                                        <input type="text" ng-model="name" ng-style="nameStyle" class="form-control" id="username" placeholder="Enter the plan name" >                            
+                                    </div>
+                                </div>
+<!--                                //Plan Name -->
+                                
+<!--                                Price -->
+                                <div class="mb-3">
+                                    <label for="address">Price</label>
+                                    <input type="number" ng-model="price" ng-change="finalFun()" ng-style="priceStyle" class="form-control" id="address" placeholder="Enter the plan price amount" >
+                                </div>                                
+                                <hr class="mb-4">
+<!--                               //Price -->
+                                
+
+<!--                                Tax -->
+                                
+                            <h4 class="mb-3">Tax</h4>
+                                <p style="color: red;">{{tasError}}</p>
+                                <div class="row">
+                                    <div class="col-md-3 mb-3">
+                                        <label for="zip">Tax%</label>
+                                        <input type="number" ng-model="taxPercent"ng-change="finalFun()" class="form-control" id="zip" placeholder="0" required="">
+                                    </div>
+                                    <div class="col-md-5 mb-3">
+                                        <label for="country">Type</label>
+                                        <select class="custom-select d-block w-100" ng-model="taxType" ng-change="finalFun()" >
+                                            <option selected>None</option>
+                                            <option>Inclusive</option>
+                                            <option>Exclusive</option>
+                                        </select>
+                                    </div>
+                                    
+                                </div>
+                                  <div class="mb-3">
+                                    <label for="address">Final Price</label>
+                                    <input type="number" ng-model="finalPrice" class="form-control" id="address" disabled >
+                                </div>                                
+                                <hr class="mb-4">
+                                
+<!--                                // Tax -->                                
+                                
+                                
+<!--                                Duration -->                                
+                                <h4 class="mb-3">Duration</h4>
+                                <p style="color: red;">{{validError}}</p>
+                                <div class="row">
+                                    <div class="col-md-3 mb-3">
+                                        <label for="zip">Years</label>
+                                        <input type="number" ng-model="years" class="form-control" id="zip" placeholder="0" required="">
+                                    </div>
+                                    <div class="col-md-5 mb-3">
+                                        <label for="country">Months</label>
+                                        <select class="custom-select d-block w-100" id="country" ng-model="months">
+                                            <option>0</option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                            <option>6</option>
+                                            <option>7</option>
+                                            <option>8</option>
+                                            <option>9</option>
+                                            <option>10</option>
+                                            <option>11</option>
+                                            
+                                        </select>
+                                    </div>
+                                    
+                                </div>
+                                <hr class="mb-4">
+<!--                                // Duration -->                                                                                                              
+                                <button class="btn btn-primary btn-lg btn-block error-w3l-btn" ng-click="planClick()" >Add Plan</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+</body>
+
+</html>
