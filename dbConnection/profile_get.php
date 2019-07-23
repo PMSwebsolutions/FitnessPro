@@ -8,14 +8,13 @@
     if(!$db) {
       echo $db->lastErrorMsg();
    } 
-   $sql =<<<EOF
-      SELECT * from plan;
-EOF;
-   $myObj = array();    
-   $ret = $db->query($sql);
+
+   $que = $db->prepare('SELECT * FROM user_details WHERE status = 1');
+   $ret = $que->execute();    
    $count = 0;
+   $myObj = [];
    while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
-        $myObj[$count] = array($row['id'],$row['name'],$row['price'],$row['years'],$row['months'],$row['tax'],$row['type'],$row['category'],$row['finalprice']);
+        $myObj[$count] = array($row['reg_username'],$row['reg_email'],$row['reg_company'],$row['reg_phone'],$row['id']);
         $count = $count + 1;
       }
     $res = json_encode($myObj);

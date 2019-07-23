@@ -13,16 +13,22 @@
     if(!$db) {
       echo $db->lastErrorMsg();
    } else {
-
-   $sql =<<<EOF
-      SELECT * from user_details;
-EOF;
-
-   $ret = $db->query($sql);
+  
+        
+    $que = $db->prepare('UPDATE user_details SET status=0');
+    $ret = $que->execute();
+   
+        
+   $que = $db->prepare('SELECT * FROM user_details WHERE reg_username = :username');
+   $que->bindValue(':username', $usernameP, SQLITE3_TEXT);
+   $ret = $que->execute();        
    while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
       if($row['reg_username'] == $usernameP){
           if($row['reg_password'] == $passwordP){
-              echo "Logged in";
+                $que = $db->prepare('UPDATE user_details SET status=1 where reg_username = :username');
+                $que->bindValue(':username', $usernameP, SQLITE3_TEXT);
+                $ret = $que->execute();    
+                echo "Logged in";
           }else{
               echo "Enter Correct Password";
           }

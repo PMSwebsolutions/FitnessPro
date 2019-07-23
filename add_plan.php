@@ -98,15 +98,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <li>
                     <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false">
                         <i class="far fa-file"></i>
-                        Plans
+                        Plans & Categories
                         <i class="fas fa-angle-down fa-pull-right"></i>
                     </a>
-                    <ul class="collapse list-unstyled" id="pageSubmenu1">
+                    <ul class="collapse list-unstyled" id="pageSubmenu1">                        
                         <li>
-                            <a href="view_plan.php">View Plans</a>
+                            <a href="add_plan.php">Add/Edit/View Plans</a>
                         </li>
                         <li>
-                            <a href="add_plan.php">Add a new Plan</a>
+                            <a href="view_plan.php">Courses/Categories</a>
                         </li>
                     </ul>
                 </li>
@@ -131,7 +131,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <!-- Page Content Holder -->
         <div id="content">
             <!-- top-bar -->
-            <nav class="navbar navbar-default mb-xl-5 mb-4">
+             <nav class="navbar navbar-default mb-xl-5 mb-4">
                 <div class="container-fluid">
 
                     <div class="navbar-header">
@@ -164,7 +164,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </a>
                                 <a href="add_plan.php" class="dropdown-item mt-3">
                                     <h4>
-                                        <i class="fas fa-tasks mr-3"></i>Add Plans</h4>
+                                        <i class="fas fa-tasks mr-3"></i>Add/Edit/View Plans</h4>
                                 </a>
                                 <a href="view_plan.php" class="dropdown-item mt-3">
                                     <h4>
@@ -193,19 +193,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </a>
                                 <a href="#" class="dropdown-item mt-3">
                                     <h4>
-                                        <i class="fas fa-link mr-3"></i>Activity</h4>
-                                </a>
-                                <a href="#" class="dropdown-item mt-3">
-                                    <h4>
-                                        <i class="far fa-envelope mr-3"></i>Messages</h4>
-                                </a>
-                                <a href="#" class="dropdown-item mt-3">
-                                    <h4>
-                                        <i class="far fa-question-circle mr-3"></i>Faq</h4>
-                                </a>
-                                <a href="#" class="dropdown-item mt-3">
-                                    <h4>
-                                        <i class="far fa-thumbs-up mr-3"></i>Support</h4>
+                                        <i class="fas fa-plus mr-3"></i>Add Employee</h4>
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="login.html">Logout</a>

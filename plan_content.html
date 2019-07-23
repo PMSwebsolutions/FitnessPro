@@ -72,12 +72,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--                            Cart Items-->
                             <ul class="list-group mb-3" style="max-height: 400px; overflow-y: scroll;">
                                 <div ng-repeat="p in planList" id="listDiv">
-                                <li class="list-group-item d-flex justify-content-between" ng-mouseover="hoverIn(p)" ng-mouseleave="hoverOut(p)" style="cursor: pointer" ng-class="{'lh-condensed' : p.isDarkActive, 'bg-light' : p.isLightActive }">
-                                    <div>
-                                        <h6 class="my-0" ng-class="{'text-muted' : p.isDarkActive, 'text-success' : p.isLightActive}"  data-toggle="modal" data-target="#exampleModal">{{p[1]}}</h6>
+                                <li class="list-group-item d-flex justify-content-between" ng-mouseover="hoverIn(p)" ng-mouseleave="hoverOut(p)" style="cursor: pointer" ng-class="{'lh-condensed' : p.isDarkActive, 'bg-light' : p.isLightActive }" ng-click="planEditForm($index)">
+                                    <div data-toggle="modal" data-target="#exampleModal">
+                                        <h6 class="my-0" ng-class="{'text-muted' : p.isDarkActive, 'text-success' : p.isLightActive}"   data-toggle="modal" data-target="#exampleModal">{{p[1]}}</h6>
                                         <small ng-class="{'text-muted' : p.isDarkActive, 'text-success' : p.isLightActive}">Years:{{p[3]}} , Months:{{p[4]}}</small>
                                     </div>
-                                    <span ng-class="{'text-muted' : p.isDarkActive, 'text-success' : p.isLightActive}">₹{{p[2]}}</span>
+                                    <span ng-class="{'text-muted' : p.isDarkActive, 'text-success' : p.isLightActive}" data-toggle="modal" data-target="#exampleModal">₹{{p[8]}}</span>
                                     <span ng-class="{'text-muted' : p.isDarkActive, 'text-danger' : p.isLightActive}"><a  ng-click="delete($index)"  style="cursor: pointer;"><i class="fas fa-trash"></i></a></span>
                                 </li>
                                 </div>
@@ -97,7 +97,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         </div>
                                         <div class="modal-body">
                                              <form  method="post" class="needs-validation" novalidate="">
-                                <p style="color: red;">{{planError}}</p>
+                                <p style="color: red;">{{planErrorE}}</p>
 <!--                                Plan Name -->
                                 <div class="mb-3">
                                     <label for="username1">Plan Name</label>
@@ -171,7 +171,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </div>
                                 <hr class="mb-4">
 <!--                                // Duration -->                                                  
-                                <button class="btn btn-primary btn-lg btn-block error-w3l-btn" ng-click="planClickE()" >Add Plan</button>                                                 
+                                <button class="btn btn-primary btn-lg btn-block error-w3l-btn" ng-click="planClickE()" >Update Plan</button>                                                 
                                             </form>
                                         </div>
                                     </div>

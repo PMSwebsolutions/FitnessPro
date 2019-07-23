@@ -164,6 +164,7 @@ app.controller('planCtrl', function($scope, $http) {
   $scope.taxTypeE = "Inclusive";
   $scope.monthsE = "0";
   $scope.yearsE = null;
+  $scope.idE = null;
   $scope.finalFunE = function(){
       if($scope.taxTypeE == "None"){
           $scope.finalPriceE = $scope.priceE;
@@ -171,12 +172,100 @@ app.controller('planCtrl', function($scope, $http) {
       }else if($scope.taxTypeE == "Inclusive"){
           $scope.finalPriceE = $scope.priceE;
       }else{
+          if($scope.taxPercentE == null){
+              $scope.taxPercentE = 0;
+          }
           $scope.finalPriceE = $scope.priceE + ($scope.priceE * $scope.taxPercentE)/100;
       }
   }
   
+  $scope.planClickE = function(){
+      var clear1E = 0;
+      var clear2E = 0;
+      redC = {
+          "border" : "1px solid red"
+      };
+      greyC = {
+          "border" : "1px solid grey"
+      };
+      
+      if($scope.nameE == ""){
+          $scope.nameStyleE = redC;
+      }else{
+          $scope.nameStyleE = greyC;
+      }
+      
+      if($scope.priceE == null){
+          $scope.priceStyleE = redC;
+      }else{
+          $scope.priceStyleE = greyC;
+      }
+      
+      if($scope.nameE == "" || $scope.priceE == null){
+          $scope.planErrorE = "Please fill the necessay data";
+      }else{
+          $scope.planErrorE = "";
+          clear1E = 1;
+      }
+      
+      if($scope.yearsE == null && $scope.monthsE == 0){
+          $scope.validErrorE = "Please enter valid duration";
+      }else{
+          $scope.validErrorE = "";
+          clear2E = 1;
+      }
+      
+      if(clear1E == 1 && clear2E == 1){
+          if($scope.yearsE == null){
+              $scope.yearsE = 0;
+          }
+          if($scope.monthsE == null){
+              $scope.monthsE = 0;
+          }
+          
+          if($scope.taxPercentE == null){
+              $scope.taxPercentE = 0;
+          }
+          
+           var configure = {
+              method : 'POST',
+              url : '../dbConnection/plan_update.php',
+              data : {
+                  'id' : $scope.idE,
+                  'name' : $scope.nameE,
+                  'price' : $scope.priceE,
+                  'years' : $scope.yearsE,
+                  'months' : $scope.monthsE,
+                  'tax' : $scope.taxPercentE,
+                  'type' : $scope.taxTypeE,
+                  'finalPrice' : $scope.finalPriceE
+              }
+          };    
+          var request = $http(configure);
+          request.then(function(response){
+              if(response.data == "success"){                
+                  window.location.href = "../add_plan.php";
+              }
+                  
+          },function(error){
+              alert(error.data);
+          });
+      }
+      
+      
+  };
   
-  
+  $scope.planEditForm = function(msg){
+      $scope.nameE = $scope.planList[msg][1];
+      $scope.priceE = $scope.planList[msg][2];
+//      alert($scope.planList[msg][8])
+      $scope.taxPercentE = $scope.planList[msg][5];
+      $scope.monthsE = $scope.planList[msg][4].toString();
+      $scope.yearsE = $scope.planList[msg][3].toString();
+      $scope.finalPriceE = $scope.planList[msg][8];
+      $scope.taxTypeE = $scope.planList[msg][6];
+      $scope.idE = $scope.planList[msg][0];
+  }    
   
 });
 

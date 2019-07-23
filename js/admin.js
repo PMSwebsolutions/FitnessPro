@@ -1,3 +1,4 @@
+
 var app = angular.module('adminApp', []);
 
 app.controller('adminCtrl', function ($scope, $http) {
@@ -7,7 +8,7 @@ app.controller('adminCtrl', function ($scope, $http) {
     $scope.email = ""
     var config = {
         method: 'POST',
-        url: '../dbConnection/user_detail_get.php'
+        url: '../dbConnection/user_detail_get.php',
     }
     var request = $http(config);
     request.then(function(response) {

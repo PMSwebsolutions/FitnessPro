@@ -1,3 +1,4 @@
+
 var app = angular.module('loginApp', []);
 app.controller('loginController', function($scope, $http) {
   $scope.username = "";
@@ -41,7 +42,7 @@ app.controller('loginController', function($scope, $http) {
           request.then(function(response){
               $scope.errorMsg = response.data;
               if(response.data == "Logged in")
-              window.location.href = "../admin.php";
+              window.location.href = "../admin.php";              
           },function(error){
               $scope.errorMsg = error;
           });
