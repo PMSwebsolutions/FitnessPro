@@ -40,15 +40,23 @@ app.controller('loginController', function($scope, $http) {
           };    
           var request = $http(configure);
           request.then(function(response){
-              $scope.errorMsg = response.data;
-              if(response.data == "Logged in")
-              window.location.href = "../admin.php";              
+              if(response.data == "a" || response.data == "na"){
+                    if(response.data == "a"){
+                        window.location.href = "../admin.php";              
+                    }else{
+                        alert("Non Admin");
+                    }    
+              }else{
+                    $scope.errorMsg = response.data;
+              }
+              
           },function(error){
               $scope.errorMsg = error;
           });
       }
   }
 });
+
 
 
 var togglePassword = function(){

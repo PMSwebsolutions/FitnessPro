@@ -16,6 +16,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
     <script src="js/angular.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/jquery.js"></script>
+    <script src="js/webcam.js"></script>
     <script type="text/javascript" src="js/register.js"></script>
 
     <script>
@@ -80,10 +81,61 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="form-group">
                         <label>Confirm Password</label>
                         <input ng-model="regCPass" ng-style="regCPassStyle"  type="password" class="form-control" placeholder="Password" required>
-                    </div>          
+                    </div>
+                    <div class="form-group">
+                        <img src="{{profImgFin}}" style="height:300px; width:250px;" alt="na"><br>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn" data-toggle="modal" data-target=".bd-example-modal-lg" ng-click="changeProfBtn()">Change Profile Pic</button>&nbsp;&nbsp;
+                        
+                        <button class="btn" ng-click="profReset()">Reset Profile</button>&nbsp;&nbsp;
+                    </div>
                     <button type="submit" ng-click="regSubmit()" class="btn btn-primary error-w3l-btn mt-sm-5 mt-3 px-4" value="submit">Submit</button>
 
                 </form>
+
+                <!-- Large popup content -->
+                
+                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="myLargeModalLabel">Change Profile Pic</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                   <form method="POST">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div id="my_camera"></div>
+                                        <br/>
+                                            <input class="btn" type=button value="Take Snapshot" ng-click="takeSnapshot()">
+                                            <input type="hidden" name="image" class="image-tag" >
+                                        </div>
+                                    <div class="col-md-6">
+                                            <div id="results">Your captured image will appear here...</div>
+                                    </div>
+                <div class="col-md-12 text-center">
+                <br/>
+                <button class="btn" ng-click="profChange()">Change Profile Picture</button>
+            </div>
+        </div>
+    </form> 
+                                    
+                                    
+                                    
+                                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <!--// Large popup content -->
+
+                
             </div>
 
         </div>

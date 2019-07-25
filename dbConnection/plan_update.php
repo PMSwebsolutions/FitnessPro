@@ -9,6 +9,7 @@
     $tax = $request->tax;
     $type = $request->type;
     $finalPrice = $request->finalPrice;
+    $category = $request->category;
     
     class MyDB extends SQLite3 {
       function __construct() {
@@ -22,7 +23,19 @@
    } 
 
 
-    $que = $db->prepare('UPDATE plan SET name=:name,price=:price,years=:years,months=:months,tax=:tax,type=:type,finalprice=:finalPrice WHERE id=:id');
+     $que = $db->prepare('SELECT name FROM plan where category=:category');
+     $que->bindValue(':category', $category, SQLITE3_TEXT); 
+     $ret = $que->execute();
+     while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
+            if(strtolower($name) == strtolower($row['name'])){
+                echo "failed";
+                exit();
+            }
+     }
+
+
+
+    $que = $db->prepare('UPDATE plan SET name=:name,price=:price,years=:years,months=:months,tax=:tax,type=:type,finalprice=:finalPrice, category=:category WHERE id=:id');
     $que->bindValue(':id', $id, SQLITE3_INTEGER);
     $que->bindValue(':name', $name, SQLITE3_TEXT);
     $que->bindValue(':price', $price, SQLITE3_INTEGER);
@@ -31,6 +44,7 @@
     $que->bindValue(':tax', $tax, SQLITE3_INTEGER);
     $que->bindValue(':type', $type, SQLITE3_TEXT);
     $que->bindValue(':finalPrice', $finalPrice, SQLITE3_INTEGER);
+    $que->bindValue(':category', $category, SQLITE3_TEXT);
     $ret = $que->execute();
    if(!$ret) {
       echo $db->lastErrorMsg();

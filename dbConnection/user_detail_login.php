@@ -17,7 +17,6 @@
         
     $que = $db->prepare('UPDATE user_details SET status=0');
     $ret = $que->execute();
-   
         
    $que = $db->prepare('SELECT * FROM user_details WHERE reg_username = :username');
    $que->bindValue(':username', $usernameP, SQLITE3_TEXT);
@@ -25,10 +24,21 @@
    while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
       if($row['reg_username'] == $usernameP){
           if($row['reg_password'] == $passwordP){
-                $que = $db->prepare('UPDATE user_details SET status=1 where reg_username = :username');
-                $que->bindValue(':username', $usernameP, SQLITE3_TEXT);
-                $ret = $que->execute();    
-                echo "Logged in";
+                $que1 = $db->prepare('UPDATE user_details SET status=1 where reg_username = :username');
+                $que1->bindValue(':username', $usernameP, SQLITE3_TEXT);
+                $ret1 = $que1->execute();
+              
+                $que2 = $db->prepare('SELECT permission FROM user_details WHERE reg_username=:username');
+                $que2->bindValue(':username', $usernameP, SQLITE3_TEXT);
+                $ret2 = $que2->execute();
+                while($row2 = $ret2->fetchArray(SQLITE3_ASSOC) ) {
+                    $per = $row2['permission'];
+                }
+                if($per == "1"){
+                    echo "a";
+                }else{
+                    echo "na";
+                }
           }else{
               echo "Enter Correct Password";
           }

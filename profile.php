@@ -1,9 +1,4 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -98,15 +93,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <li>
                     <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false">
                         <i class="far fa-file"></i>
-                        Plans & Categories
+                        Plans
                         <i class="fas fa-angle-down fa-pull-right"></i>
                     </a>
-                    <ul class="collapse list-unstyled" id="pageSubmenu1">                        
+                    <ul class="collapse list-unstyled" id="pageSubmenu1">  
                         <li>
-                            <a href="add_plan.php">Add/Edit/View Plans</a>
+                            <a href="plan_type.php">Plan Type</a>
                         </li>
                         <li>
-                            <a href="view_plan.php">Courses/Categories</a>
+                            <a href="plan.php">New Plan</a>
+                        </li>
+                    </ul>
+                </li>
+                
+                 <li>
+                    <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false">
+                        <i class="fas fa-user"></i>
+                        Employees
+                        <i class="fas fa-angle-down fa-pull-right"></i>
+                    </a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu2">  
+                        <li>
+                            <a href="employee_category.php">Add Category</a>
+                        </li>
+                        <li>
+                            <a href="employee_add.php">Add Employee</a>
+                        </li>
+                        <li>
+                            <a href="employee_list.php">Employee List</a>
                         </li>
                     </ul>
                 </li>
@@ -131,7 +145,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <!-- Page Content Holder -->
         <div id="content">
             <!-- top-bar -->
-             <nav class="navbar navbar-default mb-xl-5 mb-4">
+            <nav class="navbar navbar-default mb-xl-5 mb-4">
                 <div class="container-fluid">
 
                     <div class="navbar-header">
@@ -162,7 +176,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <h4>
                                         <i class="fab fa-connectdevelop mr-3"></i>Search Member</h4>
                                 </a>
-                                <a href="add_plan.php" class="dropdown-item mt-3">
+                                <a href="plan.php" class="dropdown-item mt-3">
                                     <h4>
                                         <i class="fas fa-tasks mr-3"></i>Add/Edit/View Plans</h4>
                                 </a>
@@ -180,14 +194,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <div class="dropdown-menu drop-3">
                                 <div class="profile d-flex mr-o">
                                     <div class="profile-l align-self-center">
-                                        <img src="images/profile.jpg" class="img-fluid mb-3" alt="Responsive image">
+                                        <img src="dbConnection/profile_get_pic.php"  class="img-fluid mb-3" alt="Responsive image">
                                     </div>
                                     <div class="profile-r align-self-center">
                                         <h3 class="sub-title-w3-agileits">{{username}}</h3>
-                                        <a href="mailto:info@example.com">{{email}}</a>
+                                        <a>{{email}}</a>
                                     </div>
                                 </div>
-                                <a href="#" class="dropdown-item mt-3">
+                                <a href="profile.php" class="dropdown-item mt-3">
                                     <h4>
                                         <i class="far fa-user mr-3"></i>My Profile</h4>
                                 </a>

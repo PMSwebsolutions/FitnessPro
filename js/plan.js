@@ -17,6 +17,19 @@ app.controller('planCtrl', function($scope, $http) {
   $scope.isLightActive = false;
   $scope.taxPercent = null;
   $scope.taxType = "Inclusive";
+  $scope.typeError = "";
+  $scope.planType = "";
+      
+  var configureP = {
+              method : 'GET',
+              url : '../dbConnection/plan_type_get.php',
+          };    
+          var requestP = $http(configureP);
+          requestP.then(function(response){
+              $scope.planTypeList = response.data;
+          },function(error){
+              alert("error");
+            });    
     
     
     
@@ -35,6 +48,7 @@ app.controller('planCtrl', function($scope, $http) {
   $scope.planClick = function(){
       var clear1 = 0;
       var clear2 = 0;
+      var clear3 = 0;
       redC = {
           "border" : "1px solid red"
       };
@@ -68,7 +82,15 @@ app.controller('planCtrl', function($scope, $http) {
           clear2 = 1;
       }
       
-      if(clear1 == 1 && clear2 == 1){
+      if($scope.planType == ""){
+          $scope.typeError = "Please select a plan type.";
+      }else{
+          $scope.typeError = "";
+          clear3 = 1;
+      }
+      
+      
+      if(clear1 == 1 && clear2 == 1 && clear3 == 1){
           if($scope.years == null){
               $scope.years = 0;
           }
@@ -80,6 +102,7 @@ app.controller('planCtrl', function($scope, $http) {
               $scope.taxPercent = 0;
           }
           
+
            var configure = {
               method : 'POST',
               url : '../dbConnection/plan_insert.php',
@@ -90,7 +113,8 @@ app.controller('planCtrl', function($scope, $http) {
                   'months' : $scope.months,
                   'tax' : $scope.taxPercent,
                   'type' : $scope.taxType,
-                  'finalPrice' : $scope.finalPrice
+                  'finalPrice' : $scope.finalPrice,
+                  'category' : $scope.planType[1]
               }
           };    
           var request = $http(configure);
@@ -100,7 +124,11 @@ app.controller('planCtrl', function($scope, $http) {
                   $scope.price = null;
                   $scope.years = null;
                   $scope.months = null;
+                  $scope.taxPercent = null;
+                  $scope.finalPrice = null;
                   getPlans();
+              }else{
+                  $scope.planError = "The plan already exists."
               }
                   
           },function(error){
@@ -238,13 +266,17 @@ app.controller('planCtrl', function($scope, $http) {
                   'months' : $scope.monthsE,
                   'tax' : $scope.taxPercentE,
                   'type' : $scope.taxTypeE,
-                  'finalPrice' : $scope.finalPriceE
+                  'finalPrice' : $scope.finalPriceE,
+                  'category' : $scope.planTypeE
               }
           };    
           var request = $http(configure);
           request.then(function(response){
               if(response.data == "success"){                
-                  window.location.href = "../add_plan.php";
+                  $('.modal').modal('hide');
+                  getPlans();
+              }else{
+                  $scope.planErrorE = "The plan already exists";
               }
                   
           },function(error){
@@ -258,13 +290,13 @@ app.controller('planCtrl', function($scope, $http) {
   $scope.planEditForm = function(msg){
       $scope.nameE = $scope.planList[msg][1];
       $scope.priceE = $scope.planList[msg][2];
-//      alert($scope.planList[msg][8])
       $scope.taxPercentE = $scope.planList[msg][5];
       $scope.monthsE = $scope.planList[msg][4].toString();
       $scope.yearsE = $scope.planList[msg][3].toString();
       $scope.finalPriceE = $scope.planList[msg][8];
       $scope.taxTypeE = $scope.planList[msg][6];
       $scope.idE = $scope.planList[msg][0];
+      $scope.planTypeE = $scope.planList[msg][7];
   }    
   
 });

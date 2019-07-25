@@ -9,17 +9,13 @@
       echo $db->lastErrorMsg();
    } 
 
-   $que = $db->prepare('SELECT * FROM user_details WHERE status = 1');
+   $que = $db->prepare('SELECT reg_profile FROM user_details WHERE status = 1');
    $ret = $que->execute();    
-   $count = 0;
-   $myObj = [];
    while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
-        $myObj[$count] = array($row['reg_username'],$row['reg_email'],$row['reg_company'],$row['reg_phone'],$row['id']);
-        $count = $count + 1;
+            $pic = $row['reg_profile'];
       }
 //print_r($row)
-    $res = json_encode($myObj);
-    echo $res;
+    echo ($pic);
    $db->close();
     
 ?>

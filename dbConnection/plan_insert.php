@@ -8,6 +8,7 @@
     $tax = $request->tax;
     $type = $request->type;
     $finalPrice = $request->finalPrice;
+    $category = $request->category;
     
     class MyDB extends SQLite3 {
       function __construct() {
@@ -20,9 +21,20 @@
       echo $db->lastErrorMsg();
    } 
 
+     $que = $db->prepare('SELECT name FROM plan where category=:category');
+     $que->bindValue(':category', $category, SQLITE3_TEXT); 
+     $ret = $que->execute();
+     while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
+            if(strtolower($name) == strtolower($row['name'])){
+                echo "failed";
+                exit();
+            }
+     }
+
+
    $sql =<<<EOF
-      INSERT INTO plan (name, price, years, months,tax,type,finalPrice)
-      VALUES ("$name", $price, $years, $months,$tax,"$type",$finalPrice);
+   INSERT INTO plan (name, price, years, months,tax,type,finalPrice,category)
+   VALUES ("$name", $price, $years, $months,$tax,"$type",$finalPrice,"$category");
 
       
 EOF;

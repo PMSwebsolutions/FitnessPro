@@ -1,9 +1,4 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,6 +50,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--//web-fonts-->
     <script src="js/jquery.js"></script>
     <script src="js/angular.js"></script>
+    <script src="js/webcam.js"></script>
     <script src="js/profile.js"></script>
 </head>
 
@@ -63,11 +59,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="outer-w3-agile mt-3">
                     <h4 class="tittle-w3-agileits mb-4">My Profile</h4>
                 <p style="color:red;">{{profileLog}}</p>
-                    <form action="#" method="post">
+                    <form method="post">
+                         <div class="form-group" style="margin:auto;width:20%;">
+                                <img src="dbConnection/profile_get_pic.php" alt="na" style="height:250px;width:250px;border-radius:50%;">
+                            </div>
+                        <br><br>
+                        <div class="form-group" style="margin:auto;width:40%;padding-left:50px;">
+                         <button class="btn" data-toggle="modal" data-target=".bd-example-modal-lg" ng-click="changeProfBtn()">Change Profile Picture</button>&nbsp;&nbsp;    
+                        <button class="btn" ng-click="profReset()">Reset Profile Picture</button>
+                        </div>
+                        <br><br>
                         <div class="form-row">
+                            
                             <div class="form-group col-md-6">
                                 <label for="inputUsername">Username</label>
-                                <input type="text" class="form-control" id="inputUsername" placeholder="Username" ng-model="profileUsername">
+                                <input type="text" class="form-control" id="inputUsername" placeholder="Username" ng-model="profileUsername" disabled>
                             </div>
                             <div class="form-group col-md-6">
                                     <label for="password1">Email</label>
@@ -93,6 +99,46 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <button class="btn btn-primary" ng-click="profileUpdate()">Update Profile</button>
                     </form>
                 </div>
+           <!-- Large popup content -->
+                
+                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="myLargeModalLabel">Change Profile Pic</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                   <form method="POST">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div id="my_camera"></div>
+                                        <br/>
+                                            <input class="btn" type=button value="Take Snapshot" ng-click="takeSnapshot()">
+                                            <input type="hidden" name="image" class="image-tag" >
+                                        </div>
+                                    <div class="col-md-6">
+                                            <div id="results">Your captured image will appear here...</div>
+                                    </div>
+                                <div class="col-md-12 text-center">
+                            <br/>
+                                <button class="btn" ng-click="profChange()">Change Profile Picture</button>
+                                    </div>
+                                    </div>
+                                </form> 
+                                    
+                                    
+                                    
+                                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <!--// Large popup content -->
      </section>
 </body>
 

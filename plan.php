@@ -1,4 +1,9 @@
-
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,14 +55,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--//web-fonts-->
     <script src="js/jquery.js"></script>
     <script src="js/angular.js"></script>
-    <script src="js/login.js"></script>
     <script src="js/admin.js"></script>
+    <script src="js/plan.js"></script>
 </head>
 
 <body ng-app="adminApp" ng-controller="adminCtrl">
     <div class="se-pre-con" ></div>
     <div class="wrapper">
         <!-- Sidebar Holder -->
+        
         <nav id="sidebar">
             <div class="sidebar-header">
                 <h1>
@@ -140,11 +146,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
             </ul>
         </nav>
+        
+        <!-- /Sidebar Holder -->
 
         <!-- Page Content Holder -->
         <div id="content">
             <!-- top-bar -->
-            <nav class="navbar navbar-default mb-xl-5 mb-4">
+             <nav class="navbar navbar-default mb-xl-5 mb-4">
                 <div class="container-fluid">
 
                     <div class="navbar-header">
@@ -215,91 +223,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </ul>
                 </div>
             </nav>
+            
             <!--// top-bar -->
-            <div class="container-fluid">
-                <div class="row">
-                    <!-- Stats -->
-                    <div class="outer-w3-agile col-xl">
-                        <div class="stat-grid p-3 d-flex align-items-center justify-content-between bg-primary">
-                            <div class="s-l">
-                                <h5>Projects</h5>
-                                <p class="paragraph-agileits-w3layouts text-white">Lorem Ipsum</p>
-                            </div>
-                            <div class="s-r">
-                                <h6>340
-                                    <i class="far fa-edit"></i>
-                                </h6>
-                            </div>
-                        </div>
-                        <div class="stat-grid p-3 mt-3 d-flex align-items-center justify-content-between bg-success">
-                            <div class="s-l">
-                                <h5>Clients</h5>
-                                <p class="paragraph-agileits-w3layouts">Lorem Ipsum</p>
-                            </div>
-                            <div class="s-r">
-                                <h6>250
-                                    <i class="far fa-smile"></i>
-                                </h6>
-                            </div>
-                        </div>
-                        <div class="stat-grid p-3 mt-3 d-flex align-items-center justify-content-between bg-danger">
-                            <div class="s-l">
-                                <h5>Tasks</h5>
-                                <p class="paragraph-agileits-w3layouts">Lorem Ipsum</p>
-                            </div>
-                            <div class="s-r">
-                                <h6>232
-                                    <i class="fas fa-tasks"></i>
-                                </h6>
-                            </div>
-                        </div>
-                        <div class="stat-grid p-3 mt-3 d-flex align-items-center justify-content-between bg-warning">
-                            <div class="s-l">
-                                <h5>Employees</h5>
-                                <p class="paragraph-agileits-w3layouts">Lorem Ipsum</p>
-                            </div>
-                            <div class="s-r">
-                                <h6>190
-                                    <i class="fas fa-users"></i>
-                                </h6>
-                            </div>
-                        </div>
+            <?php include "plan_content.html"?>
+         
                     </div>
-                    <!--// Stats -->
-                    <!-- Pie-chart -->
-                    <div class="outer-w3-agile col-xl ml-xl-3 mt-xl-0 mt-3">
-                        <h4 class="tittle-w3-agileits mb-4">Pie Chart</h4>
-                        <div id="chartdiv"></div>
-                    </div>
-                    <!--// Pie-chart -->
-                </div>
-            </div>
-            <!-- Simple-chart -->
-            <div class="outer-w3-agile mt-3">
-                <h4 class="tittle-w3-agileits mb-4">Graph</h4>
-                <div id="Hybridgraph" class="simple-chart1">
-                </div>
-            </div>
-            <!--// Simple-chart -->
-
-            <!--// Bar-Chart -->
-            <div class="outer-w3-agile mt-3">
-                <h4 class="tittle-w3-agileits mb-4">Bar Chart</h4>
-                <div id="chart-1"></div>
-            </div>
-            <!--// Bar-Chart -->
-
-            <!-- Copyright -->
-<!--
-            <div class="copyright-w3layouts py-xl-3 py-2 mt-xl-5 mt-4 text-center">
-                <p>© 2018 Modernize . All Rights Reserved | Design by
-                    <a href="http://w3layouts.com/"> W3layouts </a> | Developed by CodeBrothers
-                </p>
-            </div>
--->
-            <!--// Copyright -->
-        </div>
-    </div>
+                    <!--// Profile -->
+    </div>  
+        
+        
 
 
     <!-- Required common Js -->
@@ -328,211 +260,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </script>
     <!--// Sidebar-nav Js -->
 
-    <!-- Graph -->
-    <script src="js/SimpleChart.js"></script>
-    <script>
-        var graphdata4 = {
-            linecolor: "Random",
-            title: "Thursday",
-            values: [{
-                    X: "6",
-                    Y: 300.00
-                },
-                {
-                    X: "7",
-                    Y: 101.98
-                },
-                {
-                    X: "8",
-                    Y: 140.00
-                },
-                {
-                    X: "9",
-                    Y: 340.00
-                },
-                {
-                    X: "10",
-                    Y: 470.25
-                },
-                {
-                    X: "11",
-                    Y: 180.56
-                },
-                {
-                    X: "12",
-                    Y: 680.57
-                },
-                {
-                    X: "13",
-                    Y: 740.00
-                },
-                {
-                    X: "14",
-                    Y: 800.89
-                },
-                {
-                    X: "15",
-                    Y: 420.57
-                },
-                {
-                    X: "16",
-                    Y: 980.24
-                },
-                {
-                    X: "17",
-                    Y: 1080.00
-                },
-                {
-                    X: "18",
-                    Y: 140.24
-                },
-                {
-                    X: "19",
-                    Y: 140.58
-                },
-                {
-                    X: "20",
-                    Y: 110.54
-                },
-                {
-                    X: "21",
-                    Y: 480.00
-                },
-                {
-                    X: "22",
-                    Y: 580.00
-                },
-                {
-                    X: "23",
-                    Y: 340.89
-                },
-                {
-                    X: "0",
-                    Y: 100.26
-                },
-                {
-                    X: "1",
-                    Y: 1480.89
-                },
-                {
-                    X: "2",
-                    Y: 1380.87
-                },
-                {
-                    X: "3",
-                    Y: 1640.00
-                },
-                {
-                    X: "4",
-                    Y: 1700.00
-                }
-            ]
-        };
-        $(function () {
-            $("#Hybridgraph").SimpleChart({
-                ChartType: "Hybrid",
-                toolwidth: "50",
-                toolheight: "25",
-                axiscolor: "#E6E6E6",
-                textcolor: "#6E6E6E",
-                showlegends: false,
-                data: [graphdata4],
-                legendsize: "140",
-                legendposition: 'bottom',
-                xaxislabel: 'Hours',
-                title: 'Weekly Profit',
-                yaxislabel: 'Profit in $'
-            });
-        });
-    </script>
-    <!--// Graph -->
-    <!-- Bar-chart -->
-    <script src="js/rumcaJS.js"></script>
-    <script src="js/example.js"></script>
-    <!--// Bar-chart -->
-    <!-- Calender -->
-    <script src="js/moment.min.js"></script>
-    <script src="js/pignose.calender.js"></script>
-    <script>
-        //<![CDATA[
-        $(function () {
-            $('.calender').pignoseCalender({
-                select: function (date, obj) {
-                    obj.calender.parent().next().show().text('You selected ' +
-                        (date[0] === null ? 'null' : date[0].format('YYYY-MM-DD')) +
-                        '.');
-                }
-            });
-
-            $('.multi-select-calender').pignoseCalender({
-                multiple: true,
-                select: function (date, obj) {
-                    obj.calender.parent().next().show().text('You selected ' +
-                        (date[0] === null ? 'null' : date[0].format('YYYY-MM-DD')) +
-                        '~' +
-                        (date[1] === null ? 'null' : date[1].format('YYYY-MM-DD')) +
-                        '.');
-                }
-            });
-        });
-        //]]>
-    </script>
-    <!--// Calender -->
-
+   
+   
+    
     <!-- profile-widget-dropdown js-->
     <script src="js/script.js"></script>
     <!--// profile-widget-dropdown js-->
 
-    <!-- pie-chart -->
-    <script src='js/amcharts.js'></script>
-    <script>
-        var chart;
-        var legend;
-
-        var chartData = [{
-                country: "Lithuania",
-                value: 260
-            },
-            {
-                country: "Ireland",
-                value: 201
-            },
-            {
-                country: "Germany",
-                value: 65
-            },
-            {
-                country: "Australia",
-                value: 39
-            },
-            {
-                country: "UK",
-                value: 19
-            },
-            {
-                country: "Latvia",
-                value: 10
-            }
-        ];
-
-        AmCharts.ready(function () {
-            // PIE CHART
-            chart = new AmCharts.AmPieChart();
-            chart.dataProvider = chartData;
-            chart.titleField = "country";
-            chart.valueField = "value";
-            chart.outlineColor = "";
-            chart.outlineAlpha = 0.8;
-            chart.outlineThickness = 2;
-            // this makes the chart 3D
-            chart.depth3D = 20;
-            chart.angle = 30;
-
-            // WRITE
-            chart.write("chartdiv");
-        });
-    </script>
-    <!--// pie-chart -->
+ 
 
     <!-- dropdown nav -->
     <script>

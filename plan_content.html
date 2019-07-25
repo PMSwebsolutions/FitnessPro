@@ -75,7 +75,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <li class="list-group-item d-flex justify-content-between" ng-mouseover="hoverIn(p)" ng-mouseleave="hoverOut(p)" style="cursor: pointer" ng-class="{'lh-condensed' : p.isDarkActive, 'bg-light' : p.isLightActive }" ng-click="planEditForm($index)">
                                     <div data-toggle="modal" data-target="#exampleModal">
                                         <h6 class="my-0" ng-class="{'text-muted' : p.isDarkActive, 'text-success' : p.isLightActive}"   data-toggle="modal" data-target="#exampleModal">{{p[1]}}</h6>
-                                        <small ng-class="{'text-muted' : p.isDarkActive, 'text-success' : p.isLightActive}">Years:{{p[3]}} , Months:{{p[4]}}</small>
+                                        <small ng-class="{'text-muted' : p.isDarkActive, 'text-success' : p.isLightActive}">Years:{{p[3]}} , Months:{{p[4]}}, Plan-Type:{{p[7]}}</small>
                                     </div>
                                     <span ng-class="{'text-muted' : p.isDarkActive, 'text-success' : p.isLightActive}" data-toggle="modal" data-target="#exampleModal">₹{{p[8]}}</span>
                                     <span ng-class="{'text-muted' : p.isDarkActive, 'text-danger' : p.isLightActive}"><a  ng-click="delete($index)"  style="cursor: pointer;"><i class="fas fa-trash"></i></a></span>
@@ -90,7 +90,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel1">Edit Form</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel1">Edit Plan</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
@@ -140,7 +140,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </div>                                
                                 <hr class="mb-4">
                                 
-<!--                                // Tax -->    
+<!--                                // Tax -->
+                         <!--     Plan Type -->
+                                
+                            <h4 class="mb-3">Plan Type</h4>
+                                <p style="color: red;">{{typeErrorE}}</p>
+                                <div class="row">
+                                    <div class="col-md-5 mb-3">
+                                        <label for="pt">Plan Type</label>
+                                        <select class="custom-select d-block w-100" ng-model="planTypeE">
+                                        <option ng-repeat="pt in planTypeList" value="{{pt[1]}}">{{pt[1]}}</option>    
+                                        </select>
+                                    </div>
+                                    
+                                </div>                            
+                                <hr class="mb-4">
+                                
+<!--                                // Plan Type -->                     
+                                                 
                                                  
 <!--                                Duration -->                                
                                 <h4 class="mb-3">Duration</h4>
@@ -227,7 +244,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </div>                                
                                 <hr class="mb-4">
                                 
-<!--                                // Tax -->                                
+<!--                                // Tax -->      
+                                
+<!--                           Plan Type -->
+                                
+                            <h4 class="mb-3">Plan Type</h4>
+                                <p style="color: red;">{{typeError}}</p>
+                                <div class="row">
+                                    <div class="col-md-5 mb-3">
+                                        <label for="pt">Plan Type</label>
+                                        <select class="custom-select d-block w-100" ng-model="planType" ng-options="pt[1] for pt in planTypeList"> 
+<!--
+                                        <div ng-repeat="pt in planTypeList">
+                                            <option>{{pt[1]}}</option>    
+                                        </div>    
+-->
+                                        </select>
+                                    </div>
+                                    
+                                </div>                            
+                                <hr class="mb-4">
+                                
+<!--                                // Plan Type -->
                                 
                                 
 <!--                                Duration -->                                
